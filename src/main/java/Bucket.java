@@ -29,30 +29,6 @@ public class Bucket implements Command {
         this.y = y;
     }
 
-/*
-    @Override
-    public boolean validateFormat(String line){
-
-        String[] words = line.split(" ");
-
-        if (words.length!=4)
-            return false;
-
-        if (!words[0].equalsIgnoreCase(Constants.BUCKET_SYMBOL))
-            return false;
-
-        try {
-            new Long(words[1]).intValue();
-            new Long(words[2]).intValue();
-            new Character(words[3].charAt(0));
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        return true;
-    }
-*/
-
     @Override
     public boolean validate(int width, int height){
 

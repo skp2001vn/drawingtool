@@ -5,6 +5,4 @@ public interface Command {
 
     public boolean validate(int width, int height);
 
-    //public boolean validateFormat(String line);
-
 }

@@ -19,29 +19,6 @@ public class Canvas implements Command {
         this.height = height;
     }
 
-/*
-    @Override
-    public boolean validateFormat(String line){
-
-        String[] words = line.split(" ");
-
-        if (words.length!=3)
-            return false;
-
-        if (!words[0].equalsIgnoreCase(Constants.CANVAS_SYMBOL))
-            return false;
-
-        try {
-            new Long(words[1]).intValue();
-            new Long(words[2]).intValue();
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        return true;
-    }
-*/
-
     @Override
     public boolean validate(int width, int height){
 

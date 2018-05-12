@@ -35,31 +35,6 @@ public class Line implements Command {
         this.y2 = y2;
     }
 
-/*
-    @Override
-    public boolean validateFormat(String line){
-
-        String[] words = line.split(" ");
-
-        if (words.length!=5)
-            return false;
-
-        if (!words[0].equalsIgnoreCase(Constants.LINE_SYMBOL))
-            return false;
-
-        try {
-            new Long(words[1]).intValue();
-            new Long(words[2]).intValue();
-            new Long(words[3]).intValue();
-            new Long(words[4]).intValue();
-        } catch (NumberFormatException e) {
-            return false;
-        }
-
-        return true;
-    }
-*/
-
     @Override
     public boolean validate(int width, int height){
 
