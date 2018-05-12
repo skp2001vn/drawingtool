@@ -1,9 +1,5 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,17 +7,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public class DrawingTool {
 
-    private static final Logger logger = LogManager.getLogger(DrawingTool.class);
-
     public static void main(String... args) throws Exception {
 
-        draw("data/input.txt", "data/output.txt");
+        if (args.length != 2) {
+
+            System.out.println("please provide param for input file & param for output file");
+        }else{
+            draw(args[0], args[1]);
+        }
+
+        //draw("data/input.txt", "data/output.txt");
     }
 
     /**
@@ -35,7 +34,7 @@ public class DrawingTool {
                     .forEach(line -> populate(line, commandList));
 
         if (!validatePicture(commandList)){
-            logger.error("there should be ONLY one canvas in the picture");
+            System.out.println("there should be ONLY one canvas in the picture");
             throw new Exception("there should be ONLY one canvas in the picture");
         }
 
@@ -124,7 +123,7 @@ public class DrawingTool {
                 writer.newLine();
             }
         }catch(IOException ex){
-            logger.error("drawPicture error",ex);
+            System.out.println("drawPicture error" + ex);
         }
     }
 
@@ -154,7 +153,7 @@ public class DrawingTool {
 
             return canvas;
         } catch (NumberFormatException ex) {
-            logger.error("canvas errors", ex);
+            System.out.println("canvas errors"+ ex);
         }
         return null;
     }
@@ -172,7 +171,7 @@ public class DrawingTool {
 
             return bucket;
         } catch (NumberFormatException ex) {
-            logger.error("bucket errors", ex);
+            System.out.println("bucket errors" + ex);
         }
         return null;
     }
@@ -191,7 +190,7 @@ public class DrawingTool {
 
             return line;
         } catch (NumberFormatException ex) {
-            logger.error("line errors", ex);
+            System.out.println("line errors"+ ex);
         }
         return null;
     }
@@ -210,7 +209,7 @@ public class DrawingTool {
 
             return rectangle;
         } catch (NumberFormatException ex) {
-            logger.error("rectangle errors", ex);
+            System.out.println("rectangle errors"+ ex);
         }
         return null;
     }
