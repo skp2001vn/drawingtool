@@ -1,3 +1,6 @@
+/**
+ * This interface is to declare constants for the whole application
+ */
 public interface Constants {
 
     public static final Character DRAWN_CHARACTER = 'x';

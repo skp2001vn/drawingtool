@@ -1,4 +1,6 @@
-
+/**
+ * This class is to fill the entire area connected to (x,y) with colour
+ */
 public class Bucket implements Command {
 
     int x, y;
@@ -29,6 +31,13 @@ public class Bucket implements Command {
         this.y = y;
     }
 
+    /**
+     * This method is to check whether the input bucket dot is inside the picture area, which is canvas area in this case
+     *
+     * @param width
+     * @param height
+     * @return
+     */
     @Override
     public boolean validate(int width, int height){
 
@@ -43,6 +52,11 @@ public class Bucket implements Command {
     }
 
         /**
+         * This method is to fill out recursively the entire area connected to (x,y) with colourToFill, which is "x" in this case
+         * Based on the input dot, the algorithm will check four surrounded dots((x+1,y), (x-1,y), (x,y+1), (x,y-1)
+         *      to see whether these dots need to be filled based on their colour.
+         *      If any of these dots have the colourToReplace, which is " " in this case, color of these dots will be updated by colourToReplace
+         * Recursively, the algorithm will continue to check four dots surround each of these dot to replace/fill in
          *
          * @param picture
          * @param colourToReplace
@@ -63,7 +77,9 @@ public class Bucket implements Command {
     }
 
     /**
-     *
+     * Get the current colour of the dot (x,y) in the picture.
+     *      If the dot is not in the picture, return null
+     *      Otherwise, return the current colour
      * @param picture
      * @param x
      * @param y

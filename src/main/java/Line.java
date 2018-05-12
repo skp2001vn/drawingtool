@@ -1,4 +1,6 @@
-
+/**
+ * This class is to create a new line from (x1,y1) to (x2,y2)
+ */
 public class Line implements Command {
 
     int x1, y1, x2, y2;
@@ -35,6 +37,13 @@ public class Line implements Command {
         this.y2 = y2;
     }
 
+    /**
+     * This method is to check whether the input line is inside the picture area, which is canvas area in this case
+     *
+     * @param width
+     * @param height
+     * @return
+     */
     @Override
     public boolean validate(int width, int height){
 
@@ -42,6 +51,10 @@ public class Line implements Command {
                 && y1<=height && y2<=height;
     }
 
+    /**
+     * This method is to draw line from (x1,y1) to (x2,y2)
+     * @param picture
+     */
     @Override
     public void draw(Character[][] picture) {
 

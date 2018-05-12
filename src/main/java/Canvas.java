@@ -1,4 +1,6 @@
-
+/**
+ * This class is to create a new canvas of width w and height h
+ */
 public class Canvas implements Command {
 
     int width, height;
@@ -19,12 +21,24 @@ public class Canvas implements Command {
         this.height = height;
     }
 
+    /**
+     * Currently, there are nothing to validate for canvas
+     *
+     * @param width
+     * @param height
+     * @return
+     */
     @Override
     public boolean validate(int width, int height){
 
         return true;
     }
 
+    /**
+     * This method is to draw canvas
+     *
+     * @param picture
+     */
     @Override
     public void draw(Character[][] picture){
 
