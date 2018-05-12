@@ -1,0 +1,10 @@
+C 20 4
+L 1 2 6 2
+L 6 3 6 4
+R 16 1 20 3
+B 10 3 o
+C a b
+L a a c f
+R a b c d
+B s s 1
+X
