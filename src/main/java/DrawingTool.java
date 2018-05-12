@@ -21,17 +21,17 @@ public class DrawingTool {
 
     public static void main(String... args) throws Exception {
 
-        draw("input.txt");
+        draw("data/input.txt", "data/output.txt");
     }
 
     /**
      *
      * @throws Exception
      */
-    public static void draw(String inputFileName)throws Exception  {
+    public static void draw(String inputFileName, String outputFileName)throws Exception  {
 
         final List<Command> commandList=new ArrayList<>();
-        Files.lines(Paths.get(ClassLoader.getSystemResource(inputFileName).toURI()))
+        Files.lines(Paths.get(inputFileName))
                     .forEach(line -> populate(line, commandList));
 
         if (!validatePicture(commandList)){
@@ -47,7 +47,7 @@ public class DrawingTool {
                                                 .collect(toList());
 
         Character[][] picture =new Character[canvas.getHeight()+2][canvas.getWidth()+2];
-        drawPicture(picture, finalCommandList);
+        drawPicture(picture, finalCommandList, outputFileName);
     }
 
     private static boolean validatePicture(List<Command> commandList){
@@ -107,7 +107,7 @@ public class DrawingTool {
      *
      * @param picture
      */
-    private static void drawPicture(Character[][] picture, List<Command> commandList) throws Exception{
+    private static void drawPicture(Character[][] picture, List<Command> commandList, String outputFileName) throws Exception{
 
         List<String> output= new ArrayList<>();
         commandList.stream().forEach(command -> {
@@ -117,7 +117,7 @@ public class DrawingTool {
 
         output.stream().forEach(System.out::println);
 
-        try(BufferedWriter writer = Files.newBufferedWriter(Paths.get(ClassLoader.getSystemResource("output.txt").toURI())
+        try(BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFileName)
                                                                 , StandardCharsets.UTF_8)){
             for (String item : output) {
                 writer.write(item);
