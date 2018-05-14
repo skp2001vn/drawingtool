@@ -1,5 +1,5 @@
 /**
- * This class is to fill the entire area connected to (x,y) with colour
+ * This class is to do bucket fill the entire area connected to (x,y) with colour
  */
 public class Bucket implements Command {
 
@@ -53,10 +53,11 @@ public class Bucket implements Command {
 
         /**
          * This method is to fill out recursively the entire area connected to (x,y) with colourToFill, which is "x" in this case
-         * Based on the input dot, the algorithm will check four surrounded dots((x+1,y), (x-1,y), (x,y+1), (x,y-1)
-         *      to see whether these dots need to be filled based on their colour.
-         *      If any of these dots have the colourToReplace, which is " " in this case, color of these dots will be updated by colourToReplace
-         * Recursively, the algorithm will continue to check four dots surround each of these dot to replace/fill in
+         * Based on the current input dot, the algorithm will check four surrounded dots((x+1,y), (x-1,y), (x,y+1), (x,y-1)
+         *      to see whether these dots need to be filled based on their current colour.
+         *      If any of these dots have the colourToReplace, which is " " in this case, colour of these dots will be updated by colourToReplace
+         * Recursively, the algorithm will continue to check four dots surround each of these dot to replace/fill in.
+         *      The algorithm will stop until there are no dots needed to be replaced.
          *
          * @param picture
          * @param colourToReplace
