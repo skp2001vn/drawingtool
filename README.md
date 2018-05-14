@@ -1,9 +1,9 @@
 # Drawing tool
-The application is to draw picture based on information about canvas, line, rectangle, and bucket in the data/input.txt. Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the data/output.txt
+The application is to draw picture based on information about canvas, line, rectangle, and bucket in the ```data/input.txt```. Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the ```data/output.txt```
 
 ## Prerequisites
-- java 8
-- Gradle >= 4.0
+- Java 8
+- Gradle 
 
 ## Download source code from Github
 
@@ -17,11 +17,11 @@ chmod +x gradlew
 ```
 
 ## Run application 
-Make sure the input.txt is in the data source folder
+Make sure the ```data\input.txt``` is in the source folder
 ```
 java -jar build\libs\drawingtool-1.0-SNAPSHOT.jar data/input.txt data/output.txt
 ```
 
 ## Verify result
-The application will produce the output.txt in the data source folder
+The application will produce the ```data\output.txt``` in the data source folder
 
