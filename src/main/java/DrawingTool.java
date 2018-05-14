@@ -10,12 +10,12 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 /**
- * This is the main class to draw picture based on data/input.txt, which contain information about canvas, line, etc which needed to be drawn
- *      The result will be canvas, lines, etc which are in the data/output.txt
+ * The application is to draw picture based on information about canvas, line, rectangle, and bucket in the data/input.txt.
+ *      Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the data/output.txt
  * The application use the command design pattern to populate all the input commands into the command list, and draw picture based on this list
- * Also, the application use the recursive algorithm to do the bucket fillin
+ *  Also, the application use the recursive algorithm to do the bucket filling
  *
- */
+ *  */
 public class DrawingTool {
 
     public static void main(String... args) throws Exception {
@@ -32,29 +32,32 @@ public class DrawingTool {
     /**
      *  This is the main method to draw picture for the whole application
      *  Here are steps to do it:
-     *      1. Read command from the input file and populate into the command list.
-     *          One example of command is L 1 2 6 2 => the command is to draw line from (1,2) to (6,2)
-     *          Note that if the input command is not in valid format,
-     *              the application will ignore the command and not populate into the command list
-     *      2. Validate to make sure the command list is not empty
-     *                          , ONLY one canvas command in the command list
-     *                          , and the canvas command should be the 1st command in the command list
-     *          If valid, the application will proceed. Otherwise, throw exception and stop
-     *      3. Retrieve the canvas object in the command list
+     *      1. Read lines from the input file, consider lines as commands, and populate into the command list.
+     *          One example of input line is L 1 2 6 2 => the command is to draw line from (1,2) to (6,2)
+     *          Note that if the input lines are not in valid format,
+     *              the application will ignore such lines and not populate into the command list
+     *      2. Validate the whole command list to make sure:
+     *              The command list is not empty
+     *              , ONLY one canvas command in the command list
+     *              , The canvas command should be the 1st command in the command list
+     *          If the whole command list is valid
+     *              , the application will proceed to step 3. Otherwise, the application will throw exception and stop
+     *      3. Retrieve the canvas object in the command list.
+     *          This canvas object is used for validation at step 4 as well as for initialization picture at step 5
      *      4. Remove all invalid commands in the command list.
      *          The rule to check in this case is just simply to check whether line, rectangle, bucket should be in the canvas area
-     *      5. Draw canvas, line, etc based on the command list
+     *      5. Draw canvas, line, rectangle and bucket filling based on the command list, and finally output the result to the data/output.txt
      *
      * @throws Exception
      */
     public static void draw(String inputFileName, String outputFileName)throws Exception  {
 
-        //1. Read command from the input file and populate into the command list
+        //1. Read lines from the input file, consider lines as commands, and populate into the command list
         final List<Command> commandList=new ArrayList<>();
         Files.lines(Paths.get(inputFileName))
                     .forEach(line -> populate(line, commandList));
 
-        //2. Validate the command list
+        //2. Validate the whole command list
         if (!validatePicture(commandList)){
             System.out.println("something wrong with the input");
             throw new Exception("something wrong with the input");
@@ -68,7 +71,7 @@ public class DrawingTool {
                                                 .filter(command -> command.validate(canvas.getWidth(),canvas.getHeight()))
                                                 .collect(toList());
 
-        //5. Draw canvas, line, etc based on the command list
+        //5. Draw canvas, line, etc based on the command list, and output the result
         Character[][] picture =new Character[canvas.getHeight()+2][canvas.getWidth()+2];
         drawPicture(picture, finalCommandList, outputFileName);
     }
@@ -122,10 +125,10 @@ public class DrawingTool {
     }
 
     /**
-     *  1. Read command from the input file and populate into the command list.
-     *      One example of command is L 1 2 6 2 => the command is to draw line from (1,2) to (6,2)
-     *      Note that if the input command is not in valid format,
-     *          the application will ignore the command and not populate into the command list
+     *      Read lines from the input file, consider lines as commands, and populate into the command list.
+     *          One example of input line is L 1 2 6 2 => the command is to draw line from (1,2) to (6,2)
+     *          Note that if the input lines are not in valid format,
+     *              the application will ignore such lines and not populate into the command list
      * @param input
      * @param commandList
      */
@@ -174,10 +177,10 @@ public class DrawingTool {
             output.addAll(generateResult(picture));
         });
 
-        //Draw canvas, line, etc based on the command list
+        //Output the result to the console
         output.stream().forEach(System.out::println);
 
-        //Output the results into the output file
+        //Output the result into the output file
         try(BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFileName)
                                                                 , StandardCharsets.UTF_8)){
             for (String item : output) {
