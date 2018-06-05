@@ -30,7 +30,7 @@ public class DrawingTool {
     }
 
     /**
-     *  This is the main method to draw picture for the whole application
+     *  This is the main method to draw picture for the whole applications
      *  Here are steps to do it:
      *      1. Read lines from the input file, consider lines as commands, and populate into the command list.
      *          One example of input line is L 1 2 6 2 => the command is to draw line from (1,2) to (6,2)
