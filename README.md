@@ -19,9 +19,9 @@ chmod +x gradlew
 ## Run application 
 Make sure the ```data\input.txt``` is in the source folder
 ```
-java -jar build\libs\drawingtool-1.0-SNAPSHOT.jar data/input.txt data/output.txt
+java -jar build/libs/drawingtool-1.0-SNAPSHOT.jar data/input.txt data/output.txt
 ```
 
 ## Verify result
-The application will produce the ```data\output.txt``` in the data source folder
+The application will produce the ```data/output.txt``` in the data source folder
 
