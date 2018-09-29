@@ -1,5 +1,6 @@
 # Drawing tool
-The application is to draw picture based on information about canvas, line, rectangle, and bucket in the ```data/input.txt```. Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the ```data/output.txt```
+- The application is to draw picture based on information about canvas, line, rectangle, and bucket in the ```data/input.txt```. Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the ```data/output.txt```
+- The application does the bucket filling by implementing the "divide and conquer" algorithm
 
 ## Prerequisites
 - Java 8

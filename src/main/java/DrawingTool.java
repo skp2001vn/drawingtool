@@ -10,7 +10,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 /**
- * The application is to draw picture based on information about canvas, line, rectangle, and bucket in the data/input.txt.
+ * This is the sample application to implement "divide and conquer" algorithm. It is to draw picture based on information about canvas, line, rectangle, and bucket in the data/input.txt.
  *      Based on such information, the application will produce corresponding canvas, lines, etc and export such result to the data/output.txt
  * The application use the command design pattern to populate all the input commands into the command list, and draw picture based on this list
  *  Also, the application use the recursive algorithm to do the bucket filling
